@@ -5,8 +5,17 @@
 // 2. The Browser's fetch() function
 // 3. Using the Axios http client library
 
+// VARIABLES
 const url = "http://www.omdbapi.com/?i=tt3896198&apikey=f310df13";
 
+// ELEMENT REFERENCES
+const $title = $("#title");
+const $year = $("#year");
+const $rated = $("#rated");
+
+// EVENT LISTENERS
+
+// FUNCTIONS
 function handleGetData() {
   $.ajax(url).then(
     function (data) {
