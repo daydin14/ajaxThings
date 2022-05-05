@@ -6,7 +6,16 @@
 // 3. Using the Axios http client library
 
 const url = "http://www.omdbapi.com/?i=tt3896198&apikey=f310df13";
-$.ajax(url).then(function (data) {
-  console.log("movie data is ready");
-  console.log(data);
-});
+
+function handleGetData() {
+  $.ajax(url).then(
+    function (data) {
+      console.log("movie data is ready");
+      console.log(data);
+    },
+    function (error) {
+      console.log("something is wrong");
+      console.log(error);
+    }
+  );
+}
