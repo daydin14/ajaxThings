@@ -21,6 +21,15 @@ function handleGetData() {
     function (data) {
       console.log("movie data is ready");
       console.log(data);
+
+      $title.text(data.Title);
+      $year.text(data.Year);
+      $rated.text(data.Rated);
+      $("main").append(`<img src="${data.Poster}">`);
+
+      // console.log($title);
+      // console.log($year);
+      // console.log($rated);
     },
     function (error) {
       console.log("something is wrong");
