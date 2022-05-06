@@ -6,18 +6,26 @@
 // 3. Using the Axios http client library
 
 // VARIABLES
-const url = "http://www.omdbapi.com/?i=tt3896198&apikey=f310df13";
+const url = "http://www.omdbapi.com/?&apikey=f310df13&t=";
 
 // ELEMENT REFERENCES
 const $title = $("#title");
 const $year = $("#year");
 const $rated = $("#rated");
+const $form = $("form");
+const $input = $(`input[type="text"]`);
+// const $i = $(input[type="text"]);   Doesn't work I think.
 
 // EVENT LISTENERS
 
+$form.on("submit", handleGetData);
+
 // FUNCTIONS
-function handleGetData() {
-  $.ajax(url).then(
+function handleGetData(event) {
+  event.preventDefault();
+  const userInput = $input.val();
+
+  $.ajax(url + userInput).then(
     function (data) {
       console.log("movie data is ready");
       console.log(data);
@@ -26,10 +34,6 @@ function handleGetData() {
       $year.text(data.Year);
       $rated.text(data.Rated);
       $("main").append(`<img src="${data.Poster}">`);
-
-      // console.log($title);
-      // console.log($year);
-      // console.log($rated);
     },
     function (error) {
       console.log("something is wrong");
